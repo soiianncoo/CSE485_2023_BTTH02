@@ -1,5 +1,6 @@
 <?php
-class userModel{
+class userModel
+{
     private $id;
     private $username;
     private $pass;
@@ -9,5 +10,16 @@ class userModel{
         $this->username = $username;
         $this->pass = $pass;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getUsername()
+    {
+        return $this->username;
+    }
+    public function getPass()
+    {
+        return $this->pass;
+    }
 }
-

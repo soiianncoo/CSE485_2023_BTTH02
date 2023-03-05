@@ -1,6 +1,6 @@
 <?php
-include_once 'configs/DBConnection.php';
-include_once 'models/userModel.php';
+require_once 'configs/DBConnection.php';
+require_once 'models/userModel.php';
 $conn = (new DBConnection())->getConnection();
 class userService
 {
@@ -13,13 +13,23 @@ class userService
         $stmt->execute();
         //$rows = $stmt->fetchAll();
         $array = [];
-        while($row = $stmt->fetch()){
+        while ($row = $stmt->fetch()) {
             $user = new userModel($row['id'], $row['username'], $row['pass']);
             array_push($array, $user);
         }
         return $array;
     }
+    public function getUser($user, $pass)
+    {
+        global $conn;
+        $sql = "select * from users where username = '" . $user . "' and pass = '" . $pass . "';";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        //$rows = $stmt->fetchAll();
+        $row = $stmt->fetch();
+        $user = new userModel($row['id'], $row['username'], $row['pass']);
+        return $user;
+    }
 }
-// $abc = (new authorService())->getAllAuthor();
-// echo var_dump($abc);
-?>
+// $abc = (new userService())->getUser('','');
+// echo var_dump($abc->getId()); 

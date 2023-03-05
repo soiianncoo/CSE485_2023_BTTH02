@@ -6,38 +6,32 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">usename</th>
-                        <th scope="col">pass</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tên thể loại</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    for ($i = 0; $i < sizeof($arrUser); $i++) {
+                    for ($i = 0; $i < sizeof($arrCategory); $i++) {
 
                         ?>
                         <tr>
                             <td scope='row'>
-                                <?php echo $arrUser["$i"]->getId(); ?>
+                                <?php echo $arrCategory["$i"]->getMa_tloai(); ?>
                             </td>
                             <td scope='row'>
-                                <?php echo $arrUser["$i"]->getUsername() ?>
-                            </td>
-                            <td scope='row'>
-                                <?php echo $arrUser["$i"]->getPass() ?>
+                                <?php echo $arrCategory["$i"]->getTen_tloai() ?>
                             </td>
                             <td>
-                                <a href='editauthor.php?id=<?php echo $arrUser["$i"]->getId() ?>' <i class='fa-solid fa-pen-to-square'></i></a>
+                                <a href='editauthor.php?id=<?php echo $arrCategory["$i"]->getMa_tloai() ?>' <i class='fa-solid fa-pen-to-square'></i></a>
                             </td>
                             <td>
-                                <a href='?action=del&id=<?php echo $arrUser["$i"]->getId() ?>'><i class='fa-solid fa-trash'></i></a>
+                                <a href='?action=del&id=<?php echo $arrCategory["$i"]->getTen_tloai() ?>'><i class='fa-solid fa-trash'></i></a>
                             </td>
                         </tr>
-
                     <?php }
-                    // }
                     ?>
 
                 </tbody>
